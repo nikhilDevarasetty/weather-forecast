@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<div style='width: 50%; margin: auto; margin-top: 100px; text-align: center; font-family: sans-serif; padding: 50px; border-radius: 0.25rem; border: 2px solid #7c8cab' class='border-gray-100 forecast-box'>
+  <h1 class='text-4xl font-bold text-blue-600 rainbow-text'>Forecast Weather</h1>
+
+  <%= form_with(method: 'get', local: true) do %>
+    <%= label :address, "" %><br>
+    <%= text_field_tag(:address, @address || @address_default, size: 70, style: 'border: 2px solid #7c8cab; padding: 10px; border-radius: 0.25rem; margin-bottom: 20px;', placeholder: 'Enter address...') %><br>
+    <%= submit_tag("Get Forecast", style: 'margin-top: 20px; color: #fff; font-weight: 600; font-size: 16px; padding: 10px 20px; background-color: #2168f3; border-radius: 0.375rem; border-style: none; cursor: pointer;', class: 'hover:bg-blue-700 focus:outline-none') %>
+  <% end %>
+
+  <% if defined?(@weather) %>
+    <div style='margin-top: 20px'>
+      <div class="temperature">
+        <i class="fas fa-thermometer-half"></i> Temperature: <%= @weather.current_temperature %> ℃
+      </div>
+
+      <div class="temperature minimum">
+        <i class="fas fa-temperature-low"></i> Temperature Minimum: <%= @weather.low %> ℃
+      </div>
+
+      <div class="temperature maximum">
+        <i class="fas fa-temperature-high"></i> Temperature Maximum: <%= @weather.high %> ℃
+      </div>
+
+      <div class="temperature feels-like">
+        <i class="fas fa-snowflake"></i> Temperature Feels Like: <%= @weather.extended_forecast %> ℃
+      </div>
+      <div class="temperature feels-like">
+        <i class="data-icon fas fa-database"></i> Cached data? <%= @weather.from_cache ? 'Yes' : 'No' %>
+      </div>
+    </div>
+  <% end %>
+  
+  <% if flash[:error] %>
+    <div class="alert alert-danger font-bold flex flex-row items-center gap justify-center" style="margin-top: 30px; font-size: 24px; color: #D74651">
+      <%= image_tag 'cross_red.svg', height: '30px', width: '30px' %>
+      <span><%= flash[:error] %></span>
+    </div>
+  <% end %>
+</div>

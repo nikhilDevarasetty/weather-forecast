@@ -1,0 +1,87 @@
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f7f9;
+}
+
+.forecast-box {
+  background: linear-gradient(to bottom, #3db0f0, #86a8e7);
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.hover\:bg-blue-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(9, 81, 225, var(--tw-bg-opacity));
+}
+
+.flex {
+  display: -webkit-box;
+  display: flex;
+}
+
+.flex-row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+}
+
+.gap {
+  gap: 0.25rem;
+}
+
+.justify-center {
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.border-gray-100 {
+  --tw-border-opacity: 1;
+  border-color: rgba(245, 247, 249, var(--tw-border-opacity));
+}
+
+.rainbow-text {
+  background-image: linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red);
+  background-size: 600% 600%;
+  color: transparent;
+  display: inline-block;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: rainbow-animation 8s linear infinite;
+}
+
+@keyframes rainbow-animation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.temperature {
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.temperature i {
+  margin-right: 10px;
+  color: #3498db;
+}
+
+.temperature .minimum i {
+  color: #e74c3c;
+}
+
+.temperature .maximum i {
+  color: #2ecc71;
+}
+
+.temperature .feels-like i {
+  color: #f39c12;
+}
